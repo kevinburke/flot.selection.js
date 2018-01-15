@@ -120,11 +120,11 @@ The plugin allso adds the following methods to the plot object:
       var plotOffset = plot.getPlotOffset();
       var xl = e.pageX - offset.left - plotOffset.left;
       var diff = Math.abs(xl - selection.first.x);
-      if (diff < 10) {
+      if (selection.first.x !== -1 && diff < 10) {
         return selection.first;
       }
       diff = Math.abs(xl - selection.second.x);
-      if (diff < 10) {
+      if (selection.second.x !== -1 && diff < 10) {
         return selection.second;
       }
       return null;
@@ -153,9 +153,9 @@ The plugin allso adds the following methods to the plot object:
         // Graph is showing, a click was in range but not close enough to the
         // existing graph edges.
         return;
-      }
-      if (handler === null) {
-        handler = selection.first;
+      } else if (handler === null) {
+        setSelectionPos(selection.first, e);
+        handler = selection.second;
       }
       setSelectionPos(handler, e);
 
