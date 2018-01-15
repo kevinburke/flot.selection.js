@@ -403,6 +403,6 @@ The plugin allso adds the following methods to the plot object:
       }
     },
     name: 'selection',
-    version: '1.1'
+    version: '1.1',
   });
 })(jQuery);
