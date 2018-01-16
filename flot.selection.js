@@ -266,8 +266,9 @@ The plugin allso adds the following methods to the plot object:
       if (selection.show) {
         selection.show = false;
         plot.triggerRedrawOverlay();
-        if (!preventEvent)
+        if (!preventEvent) {
           plot.getPlaceholder().trigger("plotunselected", [ ]);
+        }
       }
     }
 
@@ -279,8 +280,9 @@ The plugin allso adds the following methods to the plot object:
         axis = axes[k];
         if (axis.direction == coord) {
           key = coord + axis.n + "axis";
-          if (!ranges[key] && axis.n == 1)
+          if (!ranges[key] && axis.n == 1) {
             key = coord + "axis"; // support x1axis as xaxis
+          }
           if (ranges[key]) {
             from = ranges[key].from;
             to = ranges[key].to;
@@ -331,8 +333,9 @@ The plugin allso adds the following methods to the plot object:
 
       selection.show = true;
       plot.triggerRedrawOverlay();
-      if (!preventEvent && selectionIsSane())
+      if (!preventEvent && selectionIsSane()) {
         triggerSelectedEvent();
+      }
     }
 
     function selectionIsSane() {
@@ -386,8 +389,9 @@ The plugin allso adds the following methods to the plot object:
       eventHolder.unbind("mousemove", onMouseMove);
       eventHolder.unbind("mousedown", onMouseDown);
 
-      if (mouseUpHandler)
+      if (mouseUpHandler) {
         $(document).unbind("mouseup", mouseUpHandler);
+      }
     });
 
   }
